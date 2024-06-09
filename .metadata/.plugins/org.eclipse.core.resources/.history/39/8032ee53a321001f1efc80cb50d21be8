@@ -1,0 +1,19 @@
+package org.jsp.reservationapp.service;
+
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+
+public class ReservationApiMailService {
+	
+	private JavaMailSender javaMailSender;
+	
+	public String sendMail(String email,String url) {
+		SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
+		simpleMailMessage.setTo(email);
+		simpleMailMessage.setText("Dear User, Please Activate Your Account By Click On The Given Link: "+url);
+		simpleMailMessage.setSubject("Activate Your Account");
+		javaMailSender.send(simpleMailMessage);
+		return "Registration succesfully and Verificationmail has been send";
+	}
+
+}
